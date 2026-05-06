@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LinkedIn Profile Rewrite — Maryna Bodnaryuk</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --accent: #1f3a5f;
+    --accent-soft: #e8eef5;
+    --ink: #1a1a1a;
+    --muted: #5a6470;
+    --line: #d8dde4;
+    --copy-bg: #f4f1ea;
+    --copy-border: #c8b88a;
+    --check-bg: #fafbfc;
+  }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: var(--ink);
+    background: #fff;
+  }
+  .cover {
+    text-align: center;
+    padding: 80px 0 50px;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 30px;
+    page-break-after: always;
+  }
+  .cover .label {
+    font-size: 9pt;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .cover h1 {
+    font-size: 32pt;
+    color: var(--accent);
+    font-weight: 300;
+    line-height: 1.05;
+    margin: 14px 0 6px;
+    letter-spacing: -0.5px;
+  }
+  .cover h1 strong { font-weight: 700; }
+  .cover .for {
+    font-size: 13pt;
+    color: var(--muted);
+    margin-bottom: 30px;
+  }
+  .cover .meta {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin-top: 50px;
+  }
+  .cover .desc {
+    max-width: 460px;
+    margin: 30px auto 0;
+    font-size: 10.5pt;
+    line-height: 1.6;
+    color: #2a2f37;
+  }
+  h2 {
+    font-size: 14pt;
+    color: var(--accent);
+    margin: 22px 0 8px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 4px;
+    font-weight: 700;
+  }
+  h2 .num {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 10pt;
+    margin-right: 8px;
+    vertical-align: 2px;
+  }
+  h3 {
+    font-size: 11pt;
+    margin: 14px 0 4px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  h4 {
+    font-size: 9.5pt;
+    margin: 10px 0 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+  }
+  p { margin-bottom: 6px; }
+  ul, ol { margin: 4px 0 8px 18px; }
+  li { margin-bottom: 3px; line-height: 1.45; }
+  .copy {
+    background: var(--copy-bg);
+    border-left: 3px solid var(--copy-border);
+    padding: 10px 14px;
+    margin: 6px 0 10px;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    border-radius: 2px;
+    page-break-inside: avoid;
+  }
+  .copy-label {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .copy p { margin-bottom: 5px; }
+  .copy p:last-child { margin-bottom: 0; }
+  .checklist {
+    background: var(--check-bg);
+    border: 1px solid var(--line);
+    padding: 10px 14px;
+    border-radius: 3px;
+    margin: 8px 0;
+    page-break-inside: avoid;
+  }
+  .checklist .check {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    font-size: 9.5pt;
+  }
+  .checklist .box {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border: 1.2px solid var(--accent);
+    margin-right: 8px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+  .keywords {
+    font-size: 9pt;
+    line-height: 1.7;
+    background: var(--accent-soft);
+    padding: 10px 14px;
+    border-radius: 2px;
+    margin: 6px 0 10px;
+  }
+  .keywords strong { color: var(--accent); }
+  .pill {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 2px 8px;
+    border-radius: 11px;
+    margin: 0 2px 3px 0;
+    font-size: 8.5pt;
+  }
+  .pill.priority {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+  .badge-row { margin: 4px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 10px;
+    font-size: 9.5pt;
+  }
+  th, td {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .small { font-size: 9pt; color: var(--muted); }
+  .callout {
+    background: #fff8e6;
+    border-left: 3px solid #d4a72c;
+    padding: 8px 12px;
+    margin: 8px 0;
+    font-size: 9pt;
+    border-radius: 2px;
+  }
+  .callout strong { color: #7a5a08; }
+  .toc {
+    margin: 0 auto;
+    max-width: 380px;
+    text-align: left;
+  }
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--line);
+    font-size: 10pt;
+  }
+  .section-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="label">LinkedIn Profile Rewrite</div>
+  <h1><strong>Maryna</strong> Bodnaryuk</h1>
+  <div class="for">A step-by-step guide to upgrade her LinkedIn for AI annotation,<br>language QA, and multilingual remote roles</div>
+
+  <div class="desc">
+    This document contains every change Maryna should make to her LinkedIn profile, in the order to make them. Each section has the exact text to copy-paste, plus checklists for the actions she needs to take herself.
+  </div>
+
+  <div class="toc">
+    <div style="margin-top: 50px; font-size: 10pt; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 12px;">Contents</div>
+    <div class="toc-item"><span>1. Profile basics &amp; settings</span><span>p. 2</span></div>
+    <div class="toc-item"><span>2. Profile photo &amp; banner</span><span>p. 2</span></div>
+    <div class="toc-item"><span>3. Headline (3 options)</span><span>p. 3</span></div>
+    <div class="toc-item"><span>4. About section</span><span>p. 4</span></div>
+    <div class="toc-item"><span>5. Experience rewrites</span><span>p. 5</span></div>
+    <div class="toc-item"><span>6. Skills (50 keywords)</span><span>p. 6</span></div>
+    <div class="toc-item"><span>7. Languages, education, certifications</span><span>p. 7</span></div>
+    <div class="toc-item"><span>8. Featured &amp; Open-to-Work</span><span>p. 7</span></div>
+    <div class="toc-item"><span>9. Job alerts &amp; saved searches</span><span>p. 8</span></div>
+    <div class="toc-item"><span>10. Connection &amp; engagement strategy</span><span>p. 8</span></div>
+    <div class="toc-item"><span>11. Final checklist</span><span>p. 9</span></div>
+  </div>
+
+  <div class="meta">Prepared 2026 · Use as a working document — tick items as you complete them.</div>
+</div>
+
+<!-- SECTION 1 -->
+<h2><span class="num">1</span>Profile basics &amp; settings</h2>
+
+<p>Before changing any text, fix the housekeeping. These take 5 minutes and matter for searchability.</p>
+
+<div class="checklist">
+  <div class="check"><span class="box"></span><span><strong>Custom URL.</strong> Current URL has the random suffix <code>-030a21323</code>. Go to <em>Settings → Edit public profile &amp; URL</em> and change to a clean version, e.g. <code>linkedin.com/in/maryna-bodnaryuk</code> (if available) or <code>linkedin.com/in/marynabodnaryuk</code>.</span></div>
+  <div class="check"><span class="box"></span><span><strong>Location.</strong> Set to <em>Lisbon, Portugal</em>. Makes her appear in Lisbon-based recruiter searches.</span></div>
+  <div class="check"><span class="box"></span><span><strong>Industry.</strong> Set to <em>Outsourcing &amp; Offshoring Consulting</em> OR <em>Translation &amp; Localization</em>. Pick whichever matches her next-role target most.</span></div>
+  <div class="check"><span class="box"></span><span><strong>Contact info.</strong> Add both phone numbers, email, and the country code so international recruiters can reach her on WhatsApp.</span></div>
+  <div class="check"><span class="box"></span><span><strong>Public profile visibility.</strong> Settings → Visibility → make headline, summary, experience, skills, education all public.</span></div>
+  <div class="check"><span class="box"></span><span><strong>Creator mode: OFF.</strong> Creator mode hides connection counts and adds hashtags — better for recruiters to see "Connect" not "Follow".</span></div>
+</div>
+
+<!-- SECTION 2 -->
+<h2><span class="num">2</span>Profile photo &amp; banner</h2>
+
+<h4>Profile photo</h4>
+<ul>
+  <li>Use a clear head-and-shoulders photo, plain or soft-blurred background.</li>
+  <li>Smile, looking at the camera, neutral lighting (window light is best).</li>
+  <li>The current CV photo works well — same style for LinkedIn keeps her brand consistent.</li>
+  <li>Recommended size: 400×400 px minimum, square crop.</li>
+</ul>
+
+<h4>Banner image</h4>
+<ul>
+  <li>LinkedIn defaults to grey — replace it. Free option: open Canva → "LinkedIn Banner" template.</li>
+  <li>Suggestion: a soft navy or beige banner with the words <em>"Workforce Operations · Multilingual · AI Data &amp; Language QA"</em> in clean type. No stock photos of people in suits — looks generic.</li>
+  <li>Or: a high-quality photo of Lisbon skyline at golden hour. Personal, location-anchored, unique.</li>
+</ul>
+
+<!-- SECTION 3 -->
+<div class="section-break"></div>
+<h2><span class="num">3</span>Headline (pick one)</h2>
+
+<p>The headline is the single most-searched field on LinkedIn. It must include role keywords <em>and</em> language keywords. Three options below — they're ranked by how well they balance both audiences (annotation recruiters AND WFM/CS recruiters).</p>
+
+<h3>Option A — Recommended (balanced)</h3>
+<div class="copy">
+  <div class="copy-label">Copy-paste this into the headline field</div>
+  <p>Native PT / UA / RU + C1 English · Workforce Manager (Inditex via Konecta) · Open to AI Data Annotation, Language QA &amp; Multilingual Remote Roles · Lisbon</p>
+</div>
+<p class="small">Why it works: leads with the rarest asset (4-language native), names a recognisable employer (Inditex), signals what she wants next, and includes location. Comes in around 200 characters — well within LinkedIn's 220-char limit.</p>
+
+<h3>Option B — Annotation-first</h3>
+<div class="copy">
+  <div class="copy-label">If she wants to lean fully into AI annotation</div>
+  <p>AI Data Annotator &amp; Language QA Specialist · Native European Portuguese · Native Ukrainian · Native Russian · 4 yrs Workforce &amp; Customer Operations · Lisbon · Remote</p>
+</div>
+
+<h3>Option C — WFM-first (if pivoting back)</h3>
+<div class="copy">
+  <div class="copy-label">If WFM/operations is the primary target</div>
+  <p>Quadrilingual Workforce Manager (PT/UA/RU/EN) · Real-Time Operations &amp; Forecasting · ex-Inditex (Konecta) · Lisbon · Open to Remote</p>
+</div>
+
+<div class="callout"><strong>Tip.</strong> Update the headline first — recruiters who reach the rest of the profile have already been pulled in by these 220 characters.</div>
+
+<!-- SECTION 4 -->
+<div class="section-break"></div>
+<h2><span class="num">4</span>About section</h2>
+
+<p>The first 2 lines are visible without "see more". Hook there. Below — the full text to paste into the About field.</p>
+
+<div class="copy">
+  <div class="copy-label">Copy-paste — About section (2,260 characters)</div>
+
+  <p>I'm a quadrilingual operations professional based in Lisbon, native in <strong>European Portuguese, Ukrainian, and Russian</strong>, with advanced English. I've spent the last four years inside fast-paced corporate operations — most recently owning workforce planning for one of the largest e-commerce accounts in Iberia.</p>
+
+  <p>At <strong>Konecta</strong>, I worked as a <strong>Workforce Manager for Zara Online (Inditex)</strong>, planning schedules and running real-time operations across <strong>15 international markets</strong>. The job was equal parts data analysis and people coordination: forecasting volumes, monitoring agent adherence shift-by-shift, protecting SLA, partnering with HR on staffing — and doing all of it while juggling four working languages.</p>
+
+  <p>Before that I was a Customer Service Representative at <strong>O Boticário</strong>, where I learned how to listen, identify needs in seconds, and turn an ordinary interaction into a loyal customer. Two years of that taught me to read tone and context the way an annotator reads a model output — quickly, accurately, and without losing sight of the whole conversation.</p>
+
+  <p>Right now I'm focused on <strong>AI data annotation, language quality assurance, and multilingual content evaluation</strong>. The skills transfer directly: native fluency in three under-represented training-data languages, an instinct for spotting when something is off, comfort with detailed instructions, and four years of being measured against KPIs. I'm also expanding into digital content creation — Canva, CapCut, Meta Suite, YouTube Studio — and recently completed a Social Media Marketing certification through Udemy.</p>
+
+  <p>What I'm open to:</p>
+  <p>• AI data annotation, RLHF, language QA roles for European Portuguese, Ukrainian, or Russian<br>
+     • Multilingual content moderation or trust &amp; safety review<br>
+     • Localization &amp; translation QA<br>
+     • Remote workforce / real-time / capacity-planning roles in BPO or e-commerce<br>
+     • Multilingual customer experience roles for EU markets</p>
+
+  <p>I have <strong>Portuguese permanent residency</strong> (full right to work in the EU) and a Ukrainian passport. I'm available for full-time remote work, can flex into US business hours when the work calls for it, and I'm comfortable with the kind of detailed, structured tasks that AI training pipelines run on.</p>
+
+  <p>If you're hiring for any of the above — or you've found me because you're a recruiter for a platform like DataAnnotation, Outlier, Surge AI, TELUS Digital, Welocalize, Centific, Mercor, or similar — please send a message. I read all of them.</p>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section-break"></div>
+<h2><span class="num">5</span>Experience rewrites</h2>
+
+<p>Use the role title, employer, dates, and description below for each entry. <em>Don't delete existing entries — edit them in place</em> so the dates and history stay intact.</p>
+
+<h3>Workforce Manager — Konecta (Zara Online / Inditex)</h3>
+<p class="small"><strong>Title:</strong> Workforce Manager &nbsp; <strong>Company:</strong> Konecta &nbsp; <strong>Dates:</strong> Jan 2023 – Nov 2024 &nbsp; <strong>Location:</strong> Lisbon, Portugal</p>
+<div class="copy">
+  <div class="copy-label">Copy-paste — description</div>
+  <p>Workforce Manager for the Zara Online (Inditex) customer-service operation, one of the largest e-commerce accounts in Iberia.</p>
+  <p>• Owned workforce planning and scheduling across <strong>15 international markets</strong>.<br>
+     • Ran real-time intraday operations: monitored queues, agent adherence, and call/chat volumes; made staffing adjustments to protect SLA and service continuity.<br>
+     • Maintained and reported on KPIs including SLA, AHT, occupancy, shrinkage, and productivity.<br>
+     • Partnered cross-functionally with HR on staffing, training alignment, and headcount planning across multilingual teams.<br>
+     • Performed forecasting and capacity analysis using advanced Excel and dedicated workforce-management software.</p>
+  <p>Key strengths: real-time decision-making under pressure · multilingual coordination · KPI ownership · forecasting accuracy.</p>
+</div>
+
+<h3>Customer Service Representative — O Boticário</h3>
+<p class="small"><strong>Title:</strong> Customer Service Representative &nbsp; <strong>Company:</strong> O Boticário (Tudo Azul, S.A.) &nbsp; <strong>Dates:</strong> Nov 2020 – Nov 2022 &nbsp; <strong>Location:</strong> Portugal</p>
+<div class="copy">
+  <div class="copy-label">Copy-paste — description</div>
+  <p>Frontline customer service for one of the leading cosmetics retail brands in the Portuguese-speaking market.</p>
+  <p>• Delivered personalised customer service in Portuguese and English across multiple channels.<br>
+     • Built customer loyalty through active listening, needs identification, and consistent follow-through.<br>
+     • Drove revenue through cross-sell and up-sell on every interaction; supported merchandising operations.<br>
+     • Handled complaint resolution and order issues end-to-end while maintaining quality standards.</p>
+</div>
+
+<h3>Hostel Assistant — Volunteer (Lisbon)</h3>
+<p class="small"><strong>Title:</strong> Hostel Assistant (Volunteer) &nbsp; <strong>Dates:</strong> Jul 2025 – Aug 2025 &nbsp; <strong>Location:</strong> Lisbon, Portugal</p>
+<div class="copy">
+  <div class="copy-label">Copy-paste — description</div>
+  <p>Short-term volunteer role supporting a Lisbon hostel during peak summer season.</p>
+  <p>• Reception and check-in for international guests in four languages.<br>
+     • Reservation management on Booking.com, Airbnb, and Hostelworld.<br>
+     • Coordinated daily schedules for cleaning and maintenance staff.<br>
+     • Promoted and sold cultural and social activities, contributing to ancillary revenue.</p>
+</div>
+
+<h3>Career Transition — Digital Marketing &amp; AI Data Annotation</h3>
+<p class="small"><strong>Title:</strong> Career Transition — Digital Marketing &amp; AI Data Annotation &nbsp; <strong>Dates:</strong> Nov 2024 – Present &nbsp; <strong>Location:</strong> Lisbon, Portugal</p>
+<div class="copy">
+  <div class="copy-label">Copy-paste — description</div>
+  <p>Self-directed transition period combining structured upskilling with active job search in AI &amp; multilingual remote work.</p>
+  <p>• Completed Social Media Marketing (SMM) certification — Udemy, 2025.<br>
+     • Building a content portfolio with Canva, CapCut, YouTube Studio, and Meta Suite.<br>
+     • Pursuing AI data annotation, RLHF, and language QA roles aligned to native European Portuguese, Ukrainian, and Russian.</p>
+</div>
+
+<div class="callout"><strong>Why include the transition period as a role.</strong> An empty 18-month gap on LinkedIn raises questions. Framing it as "Career Transition" with concrete activities (Udemy cert, content portfolio, active search) shows intent and momentum.</div>
+
+<!-- SECTION 6 -->
+<div class="section-break"></div>
+<h2><span class="num">6</span>Skills (50 keywords — ordered)</h2>
+
+<p>LinkedIn lets her add up to 50 skills. The first 5 are pinned and visible without scrolling — those are the ones recruiters see first. Add them in this exact order so the priority shows correctly.</p>
+
+<h4>Top 5 — pin these first (most-searched terms)</h4>
+<div class="badge-row">
+  <span class="pill priority">European Portuguese</span>
+  <span class="pill priority">Ukrainian Language</span>
+  <span class="pill priority">Russian Language</span>
+  <span class="pill priority">Workforce Management</span>
+  <span class="pill priority">Data Annotation</span>
+</div>
+
+<h4>Languages &amp; linguistic skills (positions 6–15)</h4>
+<div class="badge-row">
+  <span class="pill">Multilingual Communication</span>
+  <span class="pill">Translation</span>
+  <span class="pill">Localization</span>
+  <span class="pill">Language Quality Assurance</span>
+  <span class="pill">Linguistic Review</span>
+  <span class="pill">Native Speaker Evaluation</span>
+  <span class="pill">Transcreation</span>
+  <span class="pill">Content Moderation</span>
+  <span class="pill">Cross-Cultural Communication</span>
+  <span class="pill">Proofreading</span>
+</div>
+
+<h4>AI / annotation / data (positions 16–25)</h4>
+<div class="badge-row">
+  <span class="pill">AI Training Data</span>
+  <span class="pill">RLHF (Reinforcement Learning from Human Feedback)</span>
+  <span class="pill">Large Language Models (LLM)</span>
+  <span class="pill">Prompt Evaluation</span>
+  <span class="pill">Search Relevance Evaluation</span>
+  <span class="pill">Ad Quality Evaluation</span>
+  <span class="pill">Data Labeling</span>
+  <span class="pill">Quality Assurance</span>
+  <span class="pill">Attention to Detail</span>
+  <span class="pill">Instruction Following</span>
+</div>
+
+<h4>WFM &amp; operations (positions 26–35)</h4>
+<div class="badge-row">
+  <span class="pill">Real-Time Management</span>
+  <span class="pill">Capacity Planning</span>
+  <span class="pill">Forecasting</span>
+  <span class="pill">Scheduling</span>
+  <span class="pill">SLA Management</span>
+  <span class="pill">KPI Tracking</span>
+  <span class="pill">Productivity Analysis</span>
+  <span class="pill">Operational Excellence</span>
+  <span class="pill">Cross-Functional Collaboration</span>
+  <span class="pill">Performance Reporting</span>
+</div>
+
+<h4>Customer ops &amp; tools (positions 36–50)</h4>
+<div class="badge-row">
+  <span class="pill">Customer Service</span>
+  <span class="pill">Customer Experience</span>
+  <span class="pill">Customer Loyalty</span>
+  <span class="pill">Complaint Resolution</span>
+  <span class="pill">Cross-Selling</span>
+  <span class="pill">Up-Selling</span>
+  <span class="pill">Microsoft Excel</span>
+  <span class="pill">Pivot Tables</span>
+  <span class="pill">Booking.com</span>
+  <span class="pill">Hostelworld</span>
+  <span class="pill">Canva</span>
+  <span class="pill">CapCut</span>
+  <span class="pill">Meta Business Suite</span>
+  <span class="pill">YouTube Studio</span>
+  <span class="pill">Social Media Marketing</span>
+</div>
+
+<div class="callout"><strong>Endorsements.</strong> Once skills are added, ask 5–10 ex-colleagues from Konecta and O Boticário to endorse the top 5 skills. Each endorsement strengthens recruiter-search ranking. A short "Hi X, I'm refreshing my profile — would you mind endorsing me for [skill]? Happy to return the favour." works.</div>
+
+<!-- SECTION 7 -->
+<div class="section-break"></div>
+<h2><span class="num">7</span>Languages, education &amp; certifications</h2>
+
+<h4>Languages section</h4>
+<table>
+  <tr><th>Language</th><th>Proficiency</th></tr>
+  <tr><td>Portuguese</td><td>Native or bilingual proficiency</td></tr>
+  <tr><td>Ukrainian</td><td>Native or bilingual proficiency</td></tr>
+  <tr><td>Russian</td><td>Native or bilingual proficiency</td></tr>
+  <tr><td>English</td><td>Professional working proficiency (C1)</td></tr>
+</table>
+
+<h4>Education section</h4>
+<p>Bukovina State Financial &amp; Economic College — Law Studies — 2017–2018 (1 year completed).<br>
+<em>Activities note (optional):</em> "Completed first year of program before relocating to Portugal."</p>
+
+<h4>Licenses &amp; certifications</h4>
+<ul>
+  <li><strong>Social Media Marketing (SMM)</strong> — Udemy — Issued 2025. Add the certificate URL/PDF if available.</li>
+</ul>
+
+<h2><span class="num">8</span>Featured &amp; "Open to Work"</h2>
+
+<h4>Featured section (pin 3 items at top of profile)</h4>
+<ul>
+  <li>The modern CV PDF (so any recruiter can download it instantly).</li>
+  <li>The Udemy SMM certificate — proof of recent learning.</li>
+  <li>One sample of her content-creation work (a short video, a Canva post) — shows initiative.</li>
+</ul>
+
+<h4>Open to Work — settings</h4>
+<div class="checklist">
+  <div class="check"><span class="box"></span><span>Toggle "Open to Work" ON. Choose <strong>"Recruiters only"</strong> visibility (avoids the green banner; current employer would be irrelevant since she's between roles, but keeps the profile cleaner).</span></div>
+  <div class="check"><span class="box"></span><span><strong>Job titles to add</strong> (LinkedIn allows up to 5):
+    <br>1. Data Annotator
+    <br>2. AI Trainer
+    <br>3. Language Quality Specialist
+    <br>4. Workforce Manager
+    <br>5. Customer Service Specialist</span></div>
+  <div class="check"><span class="box"></span><span><strong>Locations:</strong> Lisbon, Portugal · Remote · United Kingdom (remote often hires from PT) · United States (for AI annotation platforms paying USD).</span></div>
+  <div class="check"><span class="box"></span><span><strong>Job types:</strong> Full-time · Contract · Part-time.</span></div>
+  <div class="check"><span class="box"></span><span><strong>Start date:</strong> Immediately.</span></div>
+</div>
+
+<!-- SECTION 9 -->
+<div class="section-break"></div>
+<h2><span class="num">9</span>Job alerts &amp; saved searches</h2>
+
+<p>Set these saved searches so new postings come into her inbox daily. Use LinkedIn Jobs → search → save search.</p>
+
+<table>
+  <tr><th>Search query</th><th>Filters</th></tr>
+  <tr><td>"Data Annotator" OR "AI Trainer"</td><td>Remote · Worldwide · Posted past week</td></tr>
+  <tr><td>"Language Quality" OR "Linguistic Review"</td><td>Remote · Europe · Past week</td></tr>
+  <tr><td>"Portuguese" Annotator</td><td>Remote · Past week</td></tr>
+  <tr><td>"Ukrainian" OR "Russian" Annotator</td><td>Remote · Past week</td></tr>
+  <tr><td>"Workforce Manager" OR "WFM Analyst"</td><td>Remote · Europe · Past week</td></tr>
+  <tr><td>"Customer Service" Portuguese</td><td>Lisbon · Remote · Past week</td></tr>
+  <tr><td>"Content Moderator" Russian OR Ukrainian</td><td>Remote · Past week</td></tr>
+</table>
+
+<h2><span class="num">10</span>Connection &amp; engagement strategy</h2>
+
+<h4>Who to connect with (target 50–80 new connections in week 1)</h4>
+<ol>
+  <li><strong>Konecta and Inditex alumni</strong> — search "Konecta Lisbon" and "Zara Online" — connect with anyone she actually worked with.</li>
+  <li><strong>Recruiters at target platforms</strong> — search "recruiter" + "DataAnnotation" / "Outlier" / "Scale AI" / "Surge AI" / "Welocalize" / "TELUS Digital" / "Centific" / "Mercor".</li>
+  <li><strong>Workforce-management peers in Lisbon BPOs</strong> — Concentrix, Foundever, Teleperformance, TaskUs, Webhelp.</li>
+  <li><strong>Localization and language-services people</strong> — search "European Portuguese" or "Ukrainian linguist" with location Portugal.</li>
+</ol>
+
+<h4>Connection-request note template</h4>
+<div class="copy">
+  <div class="copy-label">Use this short note (300-char limit)</div>
+  <p>Hi [Name] — I came across your profile while looking at [Konecta / Outlier / etc.] and wanted to connect. I'm a multilingual workforce specialist (PT/UA/RU/EN) currently exploring AI data annotation and language QA roles. Would love to be in your network. — Maryna</p>
+</div>
+
+<h4>Engagement (light, sustainable)</h4>
+<ul>
+  <li>Once a week, comment something substantive on a post by a target recruiter or platform.</li>
+  <li>Once every 2 weeks, post something herself — a short reflection on her career transition, a tool she's testing, a multilingual observation. Use 3–5 hashtags including <code>#dataannotation</code>, <code>#aitrainer</code>, <code>#languageQA</code>, <code>#workforcemanagement</code>, <code>#multilingual</code>.</li>
+  <li>Don't over-post. Two well-thought posts a month beats daily fluff.</li>
+</ul>
+
+<!-- SECTION 11 -->
+<div class="section-break"></div>
+<h2><span class="num">11</span>Final checklist</h2>
+
+<p>Print this page and tick as she goes. Total time: 2–3 hours for a thorough refresh, doable in one afternoon.</p>
+
+<div class="checklist">
+  <div class="check"><span class="box"></span><span>Custom URL set (no random suffix)</span></div>
+  <div class="check"><span class="box"></span><span>Location, industry, contact info filled in</span></div>
+  <div class="check"><span class="box"></span><span>Profile photo replaced with clean head-shot</span></div>
+  <div class="check"><span class="box"></span><span>Banner image replaced (Canva or Lisbon photo)</span></div>
+  <div class="check"><span class="box"></span><span>New headline pasted (Option A, B, or C)</span></div>
+  <div class="check"><span class="box"></span><span>About section pasted</span></div>
+  <div class="check"><span class="box"></span><span>Konecta experience description updated</span></div>
+  <div class="check"><span class="box"></span><span>O Boticário experience description updated</span></div>
+  <div class="check"><span class="box"></span><span>Hostel volunteer experience added</span></div>
+  <div class="check"><span class="box"></span><span>Career Transition entry added</span></div>
+  <div class="check"><span class="box"></span><span>Top 5 skills pinned in correct order</span></div>
+  <div class="check"><span class="box"></span><span>Remaining ~45 skills added</span></div>
+  <div class="check"><span class="box"></span><span>Languages section: 4 entries with correct proficiency</span></div>
+  <div class="check"><span class="box"></span><span>Education + Udemy certification added</span></div>
+  <div class="check"><span class="box"></span><span>Featured section: CV + cert pinned</span></div>
+  <div class="check"><span class="box"></span><span>Open to Work configured (5 job titles, locations, types)</span></div>
+  <div class="check"><span class="box"></span><span>7 saved searches set up with email alerts</span></div>
+  <div class="check"><span class="box"></span><span>Sent 50+ connection requests with the template note</span></div>
+  <div class="check"><span class="box"></span><span>Asked 5–10 ex-colleagues for skill endorsements</span></div>
+  <div class="check"><span class="box"></span><span>Posted first transition post (optional but useful)</span></div>
+</div>
+
+<div class="callout"><strong>Last thing.</strong> The biggest single ROI step is the headline. If she only has 30 minutes today, do that, the About section, and turn on Open to Work — those three changes alone will generate inbound recruiter messages within a week.</div>
+
+<p style="text-align:center; margin-top: 28px; font-size: 9pt; color: var(--muted);">— End of guide —</p>
+
+</body>
+</html>

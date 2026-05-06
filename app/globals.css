@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f4eee1;
+  --color-cream-2: #ece1c4;
+  --color-cocoa: #6b4f2c;
+  --color-ink: #2a2419;
+  --color-ink-muted: #7a6a52;
+}
+
+html, body {
+  background: #faf6ec;
+  color: var(--color-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }

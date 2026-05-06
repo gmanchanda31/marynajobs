@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Maryna Bodnaryuk — CV</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --accent: #6b4f2c;
+    --accent-soft: #f3ead4;
+    --ink: #2a2419;
+    --muted: #7a6a52;
+    --line: #d8dde4;
+    --bg: #f4eee1;
+    --sidebar-bg: #ece1c4;
+    --sidebar-ink: #2a2419;
+    --sidebar-muted: #7a6a52;
+    --sidebar-divider: rgba(60, 45, 25, 0.18);
+  }
+  body {
+    font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    padding: 24px 0;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 75mm 1fr;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .left {
+    background: var(--sidebar-bg);
+    color: var(--sidebar-ink);
+    padding: 18mm 11mm 14mm;
+  }
+  .right {
+    padding: 18mm 13mm 14mm;
+  }
+  .photo {
+    width: 42mm;
+    height: 42mm;
+    border-radius: 50%;
+    background: #fff;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid rgba(60, 45, 25, 0.15);
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-placeholder {
+    color: var(--accent);
+    font-size: 28pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .left h2 {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin: 18px 0 6px;
+    color: var(--accent);
+    font-weight: 700;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--sidebar-divider);
+  }
+  .left .item {
+    font-size: 9.5pt;
+    line-height: 1.55;
+    margin-bottom: 4px;
+    color: var(--sidebar-ink);
+  }
+  .left .item strong { color: var(--accent); font-weight: 700; }
+  .left .contact-row {
+    font-size: 9pt;
+    margin-bottom: 5px;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+  }
+  .left .contact-row a { color: inherit; text-decoration: none; }
+  .right .name {
+    font-size: 24pt;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+    color: var(--accent);
+  }
+  .right .name strong { font-weight: 700; }
+  .right .title {
+    font-size: 10pt;
+    color: var(--muted);
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .right h2 {
+    font-size: 10pt;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-top: 12px;
+    margin-bottom: 7px;
+    position: relative;
+    padding-left: 22px;
+  }
+  .right h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 14px;
+    height: 1.5px;
+    background: var(--accent);
+  }
+  .summary {
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: #2a2f37;
+  }
+  .role {
+    margin-bottom: 9px;
+    padding-left: 13px;
+    border-left: 2px solid var(--accent-soft);
+    position: relative;
+  }
+  .role::before {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: 4px;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .role .role-title {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .role .company-line {
+    font-size: 9pt;
+    color: var(--muted);
+    margin: 1px 0 3px;
+    font-style: italic;
+  }
+  .role ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .role ul li {
+    font-size: 9pt;
+    line-height: 1.42;
+    padding-left: 13px;
+    position: relative;
+    color: #2a2f37;
+    margin-bottom: 1px;
+  }
+  .role ul li::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .lang-bar {
+    margin-bottom: 8px;
+  }
+  .lang-bar .lang-name {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9.5pt;
+    margin-bottom: 3px;
+  }
+  .lang-bar .lang-name strong { color: var(--sidebar-ink); font-weight: 700; }
+  .lang-bar .lang-name span { color: var(--sidebar-muted); font-size: 8.5pt; }
+  .lang-bar .bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(60, 45, 25, 0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .lang-bar .bar .fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .skill-pill {
+    display: inline-block;
+    font-size: 8.5pt;
+    background: rgba(255,255,255,0.55);
+    padding: 3px 8px;
+    border-radius: 10px;
+    margin: 0 3px 4px 0;
+    color: var(--sidebar-ink);
+    border: 1px solid rgba(60, 45, 25, 0.1);
+  }
+  .edu-item {
+    margin-bottom: 10px;
+  }
+  .edu-item .edu-title { font-size: 10pt; font-weight: 700; color: var(--sidebar-ink); }
+  .edu-item .edu-meta { font-size: 9pt; color: var(--sidebar-muted); margin-top: 2px; line-height: 1.4; }
+  @media print {
+    body { padding: 0; background: #fff; }
+    .page { box-shadow: none; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <aside class="left">
+
+    <div class="photo">
+      <img src="maryna-photo.jpg" alt="Maryna Bodnaryuk">
+    </div>
+
+    <h2>Contact</h2>
+    <div class="contact-row">📍 Lisbon, Portugal</div>
+    <div class="contact-row">📞 +351 964 462 979</div>
+    <div class="contact-row">📞 +380 96 779 1273</div>
+    <div class="contact-row">✉ mbmarinaee@gmail.com</div>
+    <div class="contact-row"><a href="https://www.linkedin.com/in/maryna-bodnaryuk-030a21323/">linkedin.com/in/maryna-bodnaryuk-030a21323</a></div>
+
+    <h2>Languages</h2>
+    <div class="lang-bar">
+      <div class="lang-name"><strong>Portuguese</strong><span>Native · C2</span></div>
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+    </div>
+    <div class="lang-bar">
+      <div class="lang-name"><strong>Ukrainian</strong><span>Native · C2</span></div>
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+    </div>
+    <div class="lang-bar">
+      <div class="lang-name"><strong>Russian</strong><span>Native · C2</span></div>
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+    </div>
+    <div class="lang-bar">
+      <div class="lang-name"><strong>English</strong><span>Advanced · C1</span></div>
+      <div class="bar"><div class="fill" style="width:80%"></div></div>
+    </div>
+
+    <h2>Skills</h2>
+    <span class="skill-pill">Workforce Planning</span>
+    <span class="skill-pill">Real-Time Ops</span>
+    <span class="skill-pill">SLA / KPI</span>
+    <span class="skill-pill">Forecasting</span>
+    <span class="skill-pill">Excel</span>
+    <span class="skill-pill">Data Analysis</span>
+    <span class="skill-pill">Multilingual CS</span>
+    <span class="skill-pill">Cross-sell / Up-sell</span>
+    <span class="skill-pill">Hospitality</span>
+    <span class="skill-pill">Booking.com</span>
+    <span class="skill-pill">Airbnb</span>
+    <span class="skill-pill">Hostelworld</span>
+    <span class="skill-pill">Canva</span>
+    <span class="skill-pill">CapCut</span>
+    <span class="skill-pill">Meta Suite</span>
+    <span class="skill-pill">YouTube Studio</span>
+
+    <h2>Education</h2>
+    <div class="edu-item">
+      <div class="edu-title">Social Media Marketing</div>
+      <div class="edu-meta">Udemy · Completed 2025</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-title">Law Studies</div>
+      <div class="edu-meta">Bukovina State Financial &amp; Economic College, Ukraine · 1 year completed</div>
+    </div>
+
+    <h2>Authorization</h2>
+    <div class="contact-row">Portuguese PR (full EU work right)</div>
+    <div class="contact-row">Ukrainian passport</div>
+
+  </aside>
+
+  <main class="right">
+
+    <div class="name"><strong>Maryna</strong> Bodnaryuk</div>
+    <div class="title">Quadrilingual Workforce &amp; Operations Specialist</div>
+
+    <h2>Profile</h2>
+    <p class="summary">
+      Multilingual operations professional with 4+ years across workforce management and customer service. Owned real-time scheduling and KPI/SLA performance for Zara Online (Inditex) across 15 markets at Konecta. Native PT / UK / RU, advanced English. Detail-oriented and data-driven, currently expanding into AI data annotation and language QA.
+    </p>
+
+    <h2>Experience</h2>
+
+    <div class="role">
+      <div class="role-title">Workforce Manager</div>
+      <div class="company-line">Konecta — Zara Online (Inditex) · Jan 2023 – Nov 2024 · Lisbon</div>
+      <ul>
+        <li>Owned workforce planning and scheduling across <strong>15 international markets</strong> for the Zara Online operation.</li>
+        <li>Ran real-time intraday monitoring of queues, adherence, and volumes; reacted in-shift to protect SLA.</li>
+        <li>Maintained KPI/SLA reporting on AHT, occupancy, shrinkage, and productivity for operations leadership.</li>
+        <li>Partnered with HR on staffing and training; forecasting via advanced Excel and WFM software.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-title">Customer Service Representative</div>
+      <div class="company-line">O Boticário (Tudo Azul, S.A.) · Nov 2020 – Nov 2022 · Portugal</div>
+      <ul>
+        <li>Personalised customer service in Portuguese and English for a leading cosmetics retail brand.</li>
+        <li>Built customer loyalty through active listening; drove revenue via cross-sell, up-sell, and merchandising.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-title">Hostel Assistant (Volunteer)</div>
+      <div class="company-line">Independent Hostel · Jul 2025 – Aug 2025 · Lisbon</div>
+      <ul>
+        <li>Reception and check-in for international guests in four languages; reservations on Booking.com, Airbnb, Hostelworld.</li>
+        <li>Coordinated cleaning and maintenance team schedules.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-title">Career Transition — Digital Marketing &amp; Content</div>
+      <div class="company-line">Self-directed · Nov 2024 – Present · Lisbon</div>
+      <ul>
+        <li>Udemy SMM certification (2025); content portfolio in Canva, CapCut, YouTube Studio, Meta Suite.</li>
+        <li>Pursuing AI data annotation and language QA roles aligned to native PT / UK / RU.</li>
+      </ul>
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

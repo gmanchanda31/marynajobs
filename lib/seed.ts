@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { db } from "./db";
 import { jobs, type NewJob } from "./schema";
 

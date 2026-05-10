@@ -1,0 +1,215 @@
+{
+  "$schema_note": "Single source of truth for the local AI bot when filling application forms. Fields marked TBD must be obtained from Maryna before the bot proceeds.",
+
+  "personal": {
+    "first_name": "Maryna",
+    "last_name": "Bodnaryuk",
+    "preferred_name": "Maryna",
+    "full_name": "Maryna Bodnaryuk",
+    "date_of_birth": "1999-02-23",
+    "gender": "Female",
+    "nationality": "Ukrainian",
+    "country_of_residence": "Portugal",
+    "country_of_birth": "Ukraine",
+    "city_of_birth": "TBD"
+  },
+
+  "address": {
+    "city": "Lisbon",
+    "country": "Portugal",
+    "country_code_iso2": "PT",
+    "street": "TBD",
+    "postal_code": "TBD",
+    "region": "Lisboa"
+  },
+
+  "contact": {
+    "email": "mbmarinaee@gmail.com",
+    "phone_primary": {
+      "country": "Ukraine",
+      "country_code": "+380",
+      "number": "967791273",
+      "e164": "+380967791273",
+      "display": "+380 96 779 1273"
+    },
+    "phone_secondary": {
+      "country": "Portugal",
+      "country_code": "+351",
+      "number": "964462979",
+      "e164": "+351964462979",
+      "display": "+351 964 462 979"
+    },
+    "linkedin": "https://www.linkedin.com/in/maryna-bodnaryuk-030a21323/",
+    "website": null
+  },
+
+  "languages": [
+    { "lang": "Portuguese", "iso639_1": "pt", "variant": "European (PT-PT)", "level": "C2", "label": "Native or bilingual" },
+    { "lang": "Ukrainian",  "iso639_1": "uk", "level": "C2", "label": "Native or bilingual" },
+    { "lang": "Russian",    "iso639_1": "ru", "level": "C2", "label": "Native or bilingual" },
+    { "lang": "English",    "iso639_1": "en", "level": "C1", "label": "Advanced / professional working" }
+  ],
+
+  "work_authorization": {
+    "right_to_work_eu": true,
+    "right_to_work_uk": false,
+    "right_to_work_us": false,
+    "documents": [
+      { "type": "Permanent residency", "country": "Portugal", "number": "TBD" },
+      { "type": "Passport", "country": "Ukraine", "number": "TBD" }
+    ],
+    "needs_sponsorship": false,
+    "current_visa_status_pt": "Permanent resident"
+  },
+
+  "tax": {
+    "tax_country": "Portugal",
+    "tax_residency_country_iso": "PT",
+    "us_w8ben_required": true,
+    "us_w8ben_status": "Draft prepared in w8ben-draft.md, awaiting Maryna NIF + signature",
+    "ftin_pt_nif": "TBD",
+    "us_tin": null
+  },
+
+  "payment": {
+    "preferred_eur": {
+      "method": "Wise EUR (SEPA)",
+      "status": "active",
+      "iban": "TBD",
+      "bic": "TBD"
+    },
+    "preferred_usd": {
+      "method": "Wise USD",
+      "status": "to_be_activated",
+      "instructions": "Maryna to activate USD balance in Wise app before USD-paying platforms confirm onboarding"
+    },
+    "fallback": {
+      "method": "PayPal",
+      "email": "mbmarinaee@gmail.com",
+      "status": "active"
+    }
+  },
+
+  "availability": {
+    "start_date": "immediately",
+    "hours_per_week_target": 40,
+    "hours_per_week_min": 20,
+    "timezone_local": "Europe/Lisbon",
+    "willing_to_work_us_hours": true,
+    "willing_to_work_weekends": true,
+    "preferred_schedule": "flexible — can cover EU and US business hours"
+  },
+
+  "education": [
+    {
+      "level": "Some college (1 year)",
+      "institution": "Bukovina State Financial & Economic College",
+      "country": "Ukraine",
+      "field": "Law Studies",
+      "start_year": 2017,
+      "end_year": 2018,
+      "completed": false,
+      "notes": "Completed first year of program before relocating to Portugal."
+    },
+    {
+      "level": "Certification",
+      "institution": "Udemy",
+      "course": "Social Media Marketing (SMM)",
+      "completed_year": 2025,
+      "completed": true
+    }
+  ],
+
+  "experience": [
+    {
+      "title": "AI Annotation & Language QA — Independent Practice",
+      "company": "Self-directed",
+      "location": "Lisbon, Portugal",
+      "start": "2024-11",
+      "end": null,
+      "current": true,
+      "description": "Completed Udemy SMM certification; building annotation and content QA portfolio across PT, UK, RU. Evaluating AI-generated text for fluency, factual accuracy, and cultural appropriateness across three native languages."
+    },
+    {
+      "title": "Workforce Manager",
+      "company": "Konecta — Zara Online (Inditex)",
+      "location": "Lisbon, Portugal",
+      "start": "2023-01",
+      "end": "2024-11",
+      "current": false,
+      "description": "Owned workforce planning and scheduling across 15 international markets for the Zara Online customer-service operation. Real-time intraday monitoring, KPI/SLA reporting (AHT, occupancy, shrinkage, productivity), HR partnership on staffing and training, forecasting via advanced Excel and dedicated WFM software.",
+      "reason_for_leaving": "Self-directed transition into AI/data field"
+    },
+    {
+      "title": "Customer Service Representative",
+      "company": "O Boticário (Tudo Azul, S.A.)",
+      "location": "Portugal",
+      "start": "2020-11",
+      "end": "2022-11",
+      "current": false,
+      "description": "Personalised customer service in Portuguese and English for a leading cosmetics retail brand. Built customer loyalty through active listening; drove revenue via cross-sell, up-sell, and merchandising."
+    }
+  ],
+
+  "skills": [
+    "AI Data Annotation",
+    "Language Quality Assurance",
+    "RLHF Evaluation",
+    "Translation Review",
+    "Multilingual Content Moderation",
+    "Workforce Management",
+    "Real-Time Operations",
+    "Capacity Planning",
+    "Forecasting",
+    "Microsoft Excel",
+    "KPI / SLA Tracking",
+    "Customer Service",
+    "Cross-sell / Up-sell",
+    "Canva",
+    "Meta Suite",
+    "Social Media Marketing"
+  ],
+
+  "expectations": {
+    "min_hourly_rate_usd": 10,
+    "target_hourly_rate_usd": 25,
+    "stretch_hourly_rate_usd": 40,
+    "monthly_floor_usd": 1500,
+    "monthly_target_usd": 2500
+  },
+
+  "files": {
+    "cv_ats_pdf": "docs/cv-ats.pdf",
+    "cv_modern_pdf": "docs/cv-modern.pdf",
+    "linkedin_guide_pdf": "docs/linkedin-guide.pdf",
+    "headshot": "docs/maryna-photo.jpg"
+  },
+
+  "common_application_answers": {
+    "why_this_role": "I'm a quadrilingual operations professional (PT / UA / RU / EN) transitioning into AI data annotation. My background managing workforce KPIs across 15 markets at Konecta-Zara taught me the precision and structured judgment that annotation pipelines depend on, and my native fluency across three under-represented training-data languages (especially European Portuguese) is a direct fit.",
+    "why_this_company": "PLATFORM_SPECIFIC_PLACEHOLDER — bot should swap with one sentence about the platform.",
+    "biggest_strength": "Detail-oriented work under quality metrics — my previous role measured me daily on SLA, shrinkage, and adherence, and I bring that same discipline to per-task evaluation.",
+    "preferred_languages_to_work_on": "European Portuguese (highest priority), Ukrainian, Russian, English",
+    "comfortable_with_sensitive_content": true,
+    "comfortable_with_us_hours": true,
+    "available_for_video_interview": true,
+    "has_quiet_workspace": true,
+    "has_stable_internet_25mbps_plus": true,
+    "owns_modern_laptop": true,
+    "has_webcam": true,
+    "consents_to_background_check": true,
+    "consents_to_data_processing": true
+  },
+
+  "social_profiles_for_verification": {
+    "linkedin": "https://www.linkedin.com/in/maryna-bodnaryuk-030a21323/",
+    "github": null,
+    "twitter": null
+  },
+
+  "emergency_contact": {
+    "name": "TBD",
+    "relationship": "TBD",
+    "phone": "TBD"
+  }
+}

@@ -122,13 +122,13 @@
 
   "experience": [
     {
-      "title": "AI Annotation & Language QA — Independent Practice",
-      "company": "Self-directed",
+      "title": "Freelance Social Media Marketer",
+      "company": "Self-employed",
       "location": "Lisbon, Portugal",
       "start": "2024-11",
       "end": null,
       "current": true,
-      "description": "Completed Udemy SMM certification; building annotation and content QA portfolio across PT, UK, RU. Evaluating AI-generated text for fluency, factual accuracy, and cultural appropriateness across three native languages."
+      "description": "Designing and producing multilingual social-media content (PT / EN / RU / UK) — short-form video, static graphics, and copy — using Canva, CapCut, Meta Business Suite, and YouTube Studio. Managing posting schedules, audience engagement, and basic analytics; iterating on content based on performance metrics. Completed Udemy SMM certification (2025)."
     },
     {
       "title": "Workforce Manager",
@@ -152,11 +152,13 @@
   ],
 
   "skills": [
-    "AI Data Annotation",
-    "Language Quality Assurance",
-    "RLHF Evaluation",
-    "Translation Review",
-    "Multilingual Content Moderation",
+    "Social Media Marketing",
+    "Content Creation",
+    "Short-form Video",
+    "Canva",
+    "CapCut",
+    "Meta Business Suite",
+    "YouTube Studio",
     "Workforce Management",
     "Real-Time Operations",
     "Capacity Planning",
@@ -164,10 +166,8 @@
     "Microsoft Excel",
     "KPI / SLA Tracking",
     "Customer Service",
-    "Cross-sell / Up-sell",
-    "Canva",
-    "Meta Suite",
-    "Social Media Marketing"
+    "Multilingual Communication",
+    "Attention to Detail"
   ],
 
   "expectations": {
